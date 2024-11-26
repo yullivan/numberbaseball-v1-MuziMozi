@@ -50,6 +50,17 @@ public class Application {
         return a == 3;
     }
 
+    // 볼 개수 판별 함수
+    static int ballCount(List<Integer> list1, List<Integer> list2) {
+        int count = 0;
+        for (int i = 0; i < list1.size(); i++) {
+            if (!Objects.equals(list1.get(i), list2.get(i)) && list1.contains(list2.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     /*===========*/
     /*부가 기능 함수*/
     /*===========*/
@@ -75,6 +86,7 @@ public class Application {
 
         // TODO: strike 개수를 계산하세요
         int strike = strikeCount(computerNum, userNum);
+        int ball = ballCount(computerNum, userNum);
 
         // TODO: 결과를 출력하세요 (예: "1 스트라이크")
         System.out.println(strike + " 스트라이크");
@@ -82,6 +94,10 @@ public class Application {
         // TODO: 3 스트라이크인 경우 게임을 끝내세요
         if (isCorrect(strike)) {
             System.out.println("축하합니다! 정답을 맞히셨습니다.");
+        }
+        else {
+            System.out.println("strike = " + strike);
+            System.out.println("ball = " + ball);
         }
     }
 
