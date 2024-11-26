@@ -45,6 +45,11 @@ public class Application {
         return count;
     }
 
+    // 스트라이크 3개 판별 함수
+    static boolean isCorrect(int a) {
+        return a == 3;
+    }
+
     /*===========*/
     /*부가 기능 함수*/
     /*===========*/
@@ -60,37 +65,24 @@ public class Application {
     }
 
     public static void main(String[] args) {
+
+        System.out.println("숫자 야구 게임을 시작합니다!");
+        System.out.println("1부터 9까지의 서로 다른 숫자 3개를 맞춰보세요.");
+
         List<Integer> computerNum = pickRandomNumber();
         System.out.println(computerNum);
         List<Integer> userNum = saveUserNumber();
-        System.out.println(userNum);
-        System.out.println(strikeCount(computerNum, userNum));
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.println("숫자 야구 게임을 시작합니다!");
-//        System.out.println("1부터 9까지의 서로 다른 숫자 3개를 맞춰보세요.");
-//
-//        while (true) {
-//            // 사용자 입력 받기 (이 부분은 완성되어 있음)
-//            System.out.print("\n첫 번째 숫자를 입력하세요: ");
-//            int user1 = scanner.nextInt();
-//            System.out.print("두 번째 숫자를 입력하세요: ");
-//            int user2 = scanner.nextInt();
-//            System.out.print("세 번째 숫자를 입력하세요: ");
-//            int user3 = scanner.nextInt();
-//
-//            // TODO: strike 개수를 계산하세요
-//
-//
-//            // TODO: 결과를 출력하세요 (예: "1 스트라이크")
-//
-//
-//            // TODO: 3 스트라이크인 경우 게임을 끝내세요
-//
-//
-//        }
-//
-//        // System.out.println("축하합니다! 정답을 맞추셨습니다.");
+
+        // TODO: strike 개수를 계산하세요
+        int strike = strikeCount(computerNum, userNum);
+
+        // TODO: 결과를 출력하세요 (예: "1 스트라이크")
+        System.out.println(strike + " 스트라이크");
+
+        // TODO: 3 스트라이크인 경우 게임을 끝내세요
+        if (isCorrect(strike)) {
+            System.out.println("축하합니다! 정답을 맞히셨습니다.");
+        }
     }
 
 }
