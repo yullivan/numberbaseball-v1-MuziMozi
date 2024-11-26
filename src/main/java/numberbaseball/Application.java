@@ -66,6 +66,16 @@ public class Application {
         return (strike == 0 && ball == 0);
     }
 
+    // 결과 출력 함수
+    static void printResult(int strike, int ball) {
+        if (isOut(strike, ball)) {
+            System.out.println("아웃!");
+        }
+        else {
+            System.out.println(strike + "스트라이크 / " + ball + "볼");
+        }
+    }
+
     /*===========*/
     /*부가 기능 함수*/
     /*===========*/
@@ -94,19 +104,14 @@ public class Application {
         int ball = ballCount(computerNum, userNum);
 
         // TODO: 결과를 출력하세요 (예: "1 스트라이크")
-        if (isOut(strike, ball)) {
-            System.out.println("아웃!");
-        }
-        else {
-            System.out.println(strike + "스트라이크 / " + ball + "볼");
-        }
+        printResult(strike, ball);
 
+        // TODO: 3 스트라이크인 경우 게임을 끝내세요
         while (!isCorrect(strike)) {
-            // TODO: 3 스트라이크인 경우 게임을 끝내세요
-            System.out.println(strike + " 스트라이크" + ball + " 볼");
             userNum = saveUserNumber();
             strike = strikeCount(computerNum, userNum);
             ball = ballCount(computerNum, userNum);
+            printResult(strike, ball);
         }
         System.out.println("축하합니다! 정답을 맞히셨습니다.");
     }
