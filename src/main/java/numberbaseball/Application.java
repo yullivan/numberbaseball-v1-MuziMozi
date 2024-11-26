@@ -1,16 +1,13 @@
 package numberbaseball;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Application {
     // 컴퓨터의 숫자 랜덤 추출 함수
     static List<Integer> pickRandomNumber() {
         List<Integer> randomNumber = new ArrayList<>();
+        Random random = new Random();
         while (randomNumber.size() < 3) {
-            Random random = new Random();
             int num = random.nextInt(9) + 1;
             if (!isDuplicate(randomNumber, num)) {
                 randomNumber.add(num);
@@ -19,16 +16,11 @@ public class Application {
         return randomNumber;
     }
 
-    // 리스트에 숫자 중복 판별 함수
-    static boolean isDuplicate(List<Integer> list, int i) {
-        return list.contains(i);
-    }
-
     // 유저 숫자 받기 함수
     static List<Integer> saveUserNumber() {
         List<Integer> userNumber = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
         while (userNumber.size() < 3) {
-            Scanner scanner = new Scanner(System.in);
             System.out.print("숫자를 입력하세요: ");
             int user = scanner.nextInt();
 
@@ -42,13 +34,37 @@ public class Application {
         return userNumber;
     }
 
+    // 스트라이크 개수 판별 함수
+    static int strikeCount(List<Integer> list1, List<Integer> list2) {
+        int count = 0;
+        for (int i = 0; i < list1.size(); i++) {
+            if (Objects.equals(list1.get(i), list2.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /*===========*/
+    /*부가 기능 함수*/
+    /*===========*/
+
+    // 리스트에 숫자 중복 판별 함수
+    static boolean isDuplicate(List<Integer> list, int i) {
+        return list.contains(i);
+    }
+
     // 1부터 9 사이의 숫자 판별 함수
     static boolean isCorrectRange(int a) {
         return (a > 0 && a < 10);
     }
 
     public static void main(String[] args) {
-        System.out.println(saveUserNumber());
+        List<Integer> computerNum = pickRandomNumber();
+        System.out.println(computerNum);
+        List<Integer> userNum = saveUserNumber();
+        System.out.println(userNum);
+        System.out.println(strikeCount(computerNum, userNum));
 //        Scanner scanner = new Scanner(System.in);
 //
 //        System.out.println("숫자 야구 게임을 시작합니다!");
