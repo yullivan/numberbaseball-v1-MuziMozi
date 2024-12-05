@@ -27,11 +27,11 @@ public class Balls {
 
         for (Ball comBall : this.ballList) {
             for (Ball userBall : userBalls.ballList) {
-                if (comBall.isStrike(userBall)) {
+                if (comBall.matchStatus(userBall) == BallStatus.STRIKE) {
                     strikes++;
                     break;
                 }
-                if (comBall.isBall(userBall)) {
+                if (comBall.matchStatus(userBall) == BallStatus.BALL) {
                     balls++;
                     break;
                 }

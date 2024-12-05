@@ -3,6 +3,8 @@ package numberbaseball;
 import java.util.*;
 
 public class Application {
+
+    // 컴퓨터의 랜덤한 공 3개 생성 메서드
     static Balls pickRandomNumber() {
         Balls comBalls = new Balls();
         Random random = new Random();
@@ -20,7 +22,7 @@ public class Application {
         return comBalls;
     }
 
-    // 유저 숫자 받기 함수
+    // 유저 숫자 받기 메서드
     static Balls saveUserNumber() {
         Balls userBalls = new Balls();
         Set<Integer> uniqueNumbers = new HashSet<>();
@@ -31,17 +33,27 @@ public class Application {
             System.out.print("숫자를 입력하세요: ");
             int userNum = scanner.nextInt();
 
-            if (uniqueNumbers.add(userNum)) { // 중복이 아니면 추가
+            if (isCorrectRange(userNum) && uniqueNumbers.add(userNum)) { // 중복이 아니면 추가
                 Ball ball = new Ball(userNum, position++);
                 userBalls.addBall(ball);
             }
             else {
-                System.out.println("잘못된 입력! (숫자 중복 불가)");
+                System.out.println("잘못된 입력! (숫자 중복 불가, 1부터 9까지의 정수)");
             }
         }
         return userBalls;
     }
 
+    // 3 스트라이크 판별 메서드
+    final static int THREE_STRIKE = 3;
+    static boolean isThreeStrike(GameResult gameResult) {
+        return gameResult.strikes == THREE_STRIKE;
+    }
+
+    // 유저가 입력한 숫자가 1 ~ 9까지의 정수인지 판별하는 메서드
+    static boolean isCorrectRange(int i) {
+        return i > 0 && i < 10;
+    }
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다!");
         System.out.println("1부터 9까지의 서로 다른 숫자 3개를 맞춰보세요.");
@@ -50,7 +62,6 @@ public class Application {
         computerBalls.printBalls();
 
         Balls userBalls = saveUserNumber();
-//        userBalls.printBalls();
 
         // TODO: strike 개수를 계산하세요
         GameResult result = computerBalls.calResult(userBalls);
@@ -59,7 +70,7 @@ public class Application {
         result.printResult();
 
         // TODO: 3 스트라이크인 경우 게임을 끝내세요
-        while (!result.isThreeStrike()) {
+        while (!isThreeStrike(result)) {
             userBalls = saveUserNumber();
             result = computerBalls.calResult(userBalls);
             result.printResult();

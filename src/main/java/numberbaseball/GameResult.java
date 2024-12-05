@@ -25,7 +25,4 @@ public class GameResult {
         return this.strikes == 0 && this.balls == 0;
     }
 
-    boolean isThreeStrike() {
-        return this.strikes == 3;
-    }
 }
