@@ -19,10 +19,10 @@ public class Balls {
         int strikes = 0;
         int balls = 0;
         for (Ball comball : this.ballList) {
-            if (comball.matchStatus(userBalls.ballList.get(this.ballList.indexOf(comball))).equals("STRIKE")) {
+            if (comball.matchStatus(userBalls.ballList.get(this.ballList.indexOf(comball))) == BallStatus.STRIKE) {
                 strikes++;
             }
-            else if (comball.matchStatus(userBalls.ballList.get(this.ballList.indexOf(comball))).equals("BALL")) {
+            else if (comball.matchStatus(userBalls.ballList.get(this.ballList.indexOf(comball))) == BallStatus.BALL) {
                 balls++;
             }
         }

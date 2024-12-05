@@ -9,14 +9,14 @@ public class Ball {
         this.position = position;
     }
 
-    public String matchStatus(Ball userBall) {
+    public BallStatus matchStatus(Ball userBall) {
         if (isStrike(userBall)) {
-            return "STRIKE";
+            return BallStatus.STRIKE;
         }
-        if (isBall(userBall)) {
-            return "BALL";
+        else if (isBall(userBall)) {
+            return BallStatus.BALL;
         }
-        return "NOTHING";
+        return BallStatus.NOTHING;
     }
 
     boolean isStrike(Ball userBall) {
