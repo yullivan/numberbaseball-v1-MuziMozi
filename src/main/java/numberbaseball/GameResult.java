@@ -13,6 +13,15 @@ public class GameResult {
     }
 
     static void printResult(GameResult result) {
-        System.out.println(result.strikes + "스트라이크 / " + result.balls + "볼");
+        if (isOut(result)) {
+            System.out.println("아웃");
+        }
+        else {
+            System.out.println(result.strikes + "스트라이크 / " + result.balls + "볼");
+        }
+    }
+
+    static boolean isOut(GameResult result) {
+        return result.strikes == 0 && result.balls == 0;
     }
 }

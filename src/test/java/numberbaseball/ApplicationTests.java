@@ -28,9 +28,9 @@ class ApplicationTests {
 		comBalls.addBall(new Ball(5,3));
 
 		Balls userBalls = new Balls();
-		userBalls.addBall(new Ball(1,1));
-		userBalls.addBall(new Ball(9,2));
-		userBalls.addBall(new Ball(5,3));
+		userBalls.addBall(new Ball(2,1));
+		userBalls.addBall(new Ball(3,2));
+		userBalls.addBall(new Ball(4,3));
 
 		GameResult result = new GameResult();
 		result = userBalls.calResult(comBalls, userBalls);
