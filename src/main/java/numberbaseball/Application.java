@@ -42,10 +42,6 @@ public class Application {
         return userBalls;
     }
 
-    /*===========*/
-    /*부가 기능 함수*/
-    /*===========*/
-
     public static void main(String[] args) {
         System.out.println("숫자 야구 게임을 시작합니다!");
         System.out.println("1부터 9까지의 서로 다른 숫자 3개를 맞춰보세요.");
@@ -54,22 +50,20 @@ public class Application {
         computerBalls.printBalls();
 
         Balls userBalls = saveUserNumber();
-        userBalls.printBalls();
+//        userBalls.printBalls();
 
         // TODO: strike 개수를 계산하세요
         GameResult result = computerBalls.calResult(userBalls);
-        result.printResult();
-//
+
         // TODO: 결과를 출력하세요 (예: "1 스트라이크")
-//        printResult(strike, ball);
-//
+        result.printResult();
+
         // TODO: 3 스트라이크인 경우 게임을 끝내세요
-//        while (!isCorrect(strike)) {
-//            userNum = saveUserNumber();
-//            strike = strikeCount(computerNum, userNum);
-//            ball = ballCount(computerNum, userNum);
-//            printResult(strike, ball);
-//        }
-//        System.out.println("축하합니다! 정답을 맞히셨습니다.");
+        while (!result.isThreeStrike()) {
+            userBalls = saveUserNumber();
+            result = computerBalls.calResult(userBalls);
+            result.printResult();
+        }
+        System.out.println("축하합니다! 정답을 맞히셨습니다.");
     }
 }
