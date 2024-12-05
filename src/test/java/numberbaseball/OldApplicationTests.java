@@ -9,7 +9,7 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ApplicationTests {
+class OldApplicationTests {
 
 	@Test
 	void matchStatusTest() {
