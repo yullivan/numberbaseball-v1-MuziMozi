@@ -24,14 +24,20 @@ public class Balls {
     GameResult calResult(Balls userBalls) {
         int strikes = 0;
         int balls = 0;
-        for (Ball comball : this.ballList) {
-            if (comball.matchStatus(userBalls.ballList.get(this.ballList.indexOf(comball))) == BallStatus.STRIKE) {
-                strikes++;
-            }
-            else if (comball.matchStatus(userBalls.ballList.get(this.ballList.indexOf(comball))) == BallStatus.BALL) {
-                balls++;
+
+        for (Ball comBall : this.ballList) {
+            for (Ball userBall : userBalls.ballList) {
+                if (comBall.isStrike(userBall)) {
+                    strikes++;
+                    break;
+                }
+                if (comBall.isBall(userBall)) {
+                    balls++;
+                    break;
+                }
             }
         }
+
         return new GameResult(strikes, balls);
     }
 }

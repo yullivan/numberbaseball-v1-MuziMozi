@@ -55,15 +55,15 @@ public class Application {
 
         Balls userBalls = saveUserNumber();
         userBalls.printBalls();
+
+        // TODO: strike 개수를 계산하세요
+        GameResult result = computerBalls.calResult(userBalls);
+        result.printResult();
 //
-//        // TODO: strike 개수를 계산하세요
-//        int strike = strikeCount(computerNum, userNum);
-//        int ball = ballCount(computerNum, userNum);
-//
-//        // TODO: 결과를 출력하세요 (예: "1 스트라이크")
+        // TODO: 결과를 출력하세요 (예: "1 스트라이크")
 //        printResult(strike, ball);
 //
-//        // TODO: 3 스트라이크인 경우 게임을 끝내세요
+        // TODO: 3 스트라이크인 경우 게임을 끝내세요
 //        while (!isCorrect(strike)) {
 //            userNum = saveUserNumber();
 //            strike = strikeCount(computerNum, userNum);

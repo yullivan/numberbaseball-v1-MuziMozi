@@ -23,14 +23,14 @@ class OldApplicationTests {
 	@Test
 	void calResultTest() {
 		Balls comBalls = new Balls();
-		comBalls.addBall(new Ball(1,2));
-		comBalls.addBall(new Ball(9,1));
+		comBalls.addBall(new Ball(1,1));
+		comBalls.addBall(new Ball(9,2));
 		comBalls.addBall(new Ball(5,3));
 
 		Balls userBalls = new Balls();
-		userBalls.addBall(new Ball(2,1));
-		userBalls.addBall(new Ball(3,2));
-		userBalls.addBall(new Ball(4,3));
+		userBalls.addBall(new Ball(1,1));
+		userBalls.addBall(new Ball(5,2));
+		userBalls.addBall(new Ball(9,3));
 
 		GameResult result = comBalls.calResult(userBalls);
 		result.printResult();
