@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static numberbaseball.GameResult.printResult;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTests {
@@ -33,7 +32,7 @@ class ApplicationTests {
 		userBalls.addBall(new Ball(4,3));
 
 		GameResult result = comBalls.calResult(userBalls);
-		printResult(result);
+		result.printResult();
 	}
 
 }

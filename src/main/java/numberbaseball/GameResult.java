@@ -12,16 +12,16 @@ public class GameResult {
         this.balls = balls;
     }
 
-    static void printResult(GameResult result) {
-        if (isOut(result)) {
+    void printResult() {
+        if (isOut()) {
             System.out.println("아웃");
         }
         else {
-            System.out.println(result.strikes + "스트라이크 / " + result.balls + "볼");
+            System.out.println(this.strikes + "스트라이크 / " + this.balls + "볼");
         }
     }
 
-    static boolean isOut(GameResult result) {
-        return result.strikes == 0 && result.balls == 0;
+    boolean isOut() {
+        return this.strikes == 0 && this.balls == 0;
     }
 }
