@@ -3,8 +3,11 @@ package numberbaseball;
 import java.util.ArrayList;
 import java.util.List;
 
+import static numberbaseball.Ball.matchStatus;
+
 public class Balls {
     List<Ball> ballList;
+    GameResult gameResult;
 
     public Balls() {
         ballList = new ArrayList<>();
@@ -14,9 +17,16 @@ public class Balls {
         ballList.add(ball);
     }
 
-    void printBalls(Balls balls) {
-        for (Ball ball : balls.ballList) {
-            System.out.println(ball.number);
+    List<String> matchAllBalls(Balls comBalls, Balls userBalls) {
+        List<String> resultList = new ArrayList<>();
+        for (Ball comball : comBalls.ballList) {
+            matchStatus(comball, userBalls.ballList.get(comBalls.ballList.indexOf(comball)));
+            resultList.add(matchStatus(comball, userBalls.ballList.get(comBalls.ballList.indexOf(comball))));
         }
+        return resultList;
+    }
+
+    Boolean isAllStrike(Balls comBalls, Balls userBalls) {
+        return comBalls == userBalls;
     }
 }

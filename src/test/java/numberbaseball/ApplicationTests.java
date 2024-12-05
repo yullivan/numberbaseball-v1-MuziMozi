@@ -20,13 +20,18 @@ class ApplicationTests {
 	}
 
 	@Test
-	void printBallsTest() {
-		Balls balls = new Balls();
-		balls.addBall(new Ball(1,2));
-		balls.addBall(new Ball(9,1));
-		balls.addBall(new Ball(5,3));
+	void matchAllBallsTest() {
+		Balls comBalls = new Balls();
+		comBalls.addBall(new Ball(1,2));
+		comBalls.addBall(new Ball(9,1));
+		comBalls.addBall(new Ball(5,3));
 
-		balls.printBalls(balls);
+		Balls userBalls = new Balls();
+		userBalls.addBall(new Ball(1,1));
+		userBalls.addBall(new Ball(9,2));
+		userBalls.addBall(new Ball(5,3));
+
+		System.out.println(comBalls.matchAllBalls(comBalls, userBalls));
 	}
 
 }
