@@ -2,6 +2,8 @@ package numberbaseball;
 
 import java.util.*;
 
+import static numberbaseball.Ball.matchStatus;
+
 public class Application {
     // 컴퓨터의 숫자 랜덤 추출 함수
     static List<Integer> pickRandomNumber() {
@@ -91,28 +93,30 @@ public class Application {
     }
 
     public static void main(String[] args) {
-
-        System.out.println("숫자 야구 게임을 시작합니다!");
-        System.out.println("1부터 9까지의 서로 다른 숫자 3개를 맞춰보세요.");
-
-        List<Integer> computerNum = pickRandomNumber();
-        System.out.println(computerNum);
-        List<Integer> userNum = saveUserNumber();
-
-        // TODO: strike 개수를 계산하세요
-        int strike = strikeCount(computerNum, userNum);
-        int ball = ballCount(computerNum, userNum);
-
-        // TODO: 결과를 출력하세요 (예: "1 스트라이크")
-        printResult(strike, ball);
-
-        // TODO: 3 스트라이크인 경우 게임을 끝내세요
-        while (!isCorrect(strike)) {
-            userNum = saveUserNumber();
-            strike = strikeCount(computerNum, userNum);
-            ball = ballCount(computerNum, userNum);
-            printResult(strike, ball);
-        }
-        System.out.println("축하합니다! 정답을 맞히셨습니다.");
+        Ball com = new Ball(1, 2);
+        Ball user = new Ball(1, 2);
+        System.out.println(matchStatus(com, user));
+//        System.out.println("숫자 야구 게임을 시작합니다!");
+//        System.out.println("1부터 9까지의 서로 다른 숫자 3개를 맞춰보세요.");
+//
+//        List<Integer> computerNum = pickRandomNumber();
+//        System.out.println(computerNum);
+//        List<Integer> userNum = saveUserNumber();
+//
+//        // TODO: strike 개수를 계산하세요
+//        int strike = strikeCount(computerNum, userNum);
+//        int ball = ballCount(computerNum, userNum);
+//
+//        // TODO: 결과를 출력하세요 (예: "1 스트라이크")
+//        printResult(strike, ball);
+//
+//        // TODO: 3 스트라이크인 경우 게임을 끝내세요
+//        while (!isCorrect(strike)) {
+//            userNum = saveUserNumber();
+//            strike = strikeCount(computerNum, userNum);
+//            ball = ballCount(computerNum, userNum);
+//            printResult(strike, ball);
+//        }
+//        System.out.println("축하합니다! 정답을 맞히셨습니다.");
     }
 }

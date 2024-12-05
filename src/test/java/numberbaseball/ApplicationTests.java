@@ -7,11 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@SpringBootTest
+import static numberbaseball.Ball.matchStatus;
+
 class ApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void matchStatusTest() {
+		Ball com = new Ball(1, 2);
+		Ball user = new Ball(1, 2);
+		System.out.println(matchStatus(com, user));
 	}
 
 }
