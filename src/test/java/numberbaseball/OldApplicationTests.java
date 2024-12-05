@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static numberbaseball.Application.isDuplicate;
 import static numberbaseball.Application.pickRandomNumber;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,15 +34,6 @@ class OldApplicationTests {
 
 		GameResult result = comBalls.calResult(userBalls);
 		result.printResult();
-	}
-
-	@Test
-	void isDuplicateTest() {
-		Balls comBalls = new Balls();
-		comBalls.addBall(new Ball(1,2));
-		comBalls.addBall(new Ball(9,1));
-		comBalls.addBall(new Ball(5,3));
-		System.out.println(isDuplicate(comBalls, 2));
 	}
 
 	@Test

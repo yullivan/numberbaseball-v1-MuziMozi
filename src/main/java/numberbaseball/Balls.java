@@ -15,6 +15,12 @@ public class Balls {
         ballList.add(ball);
     }
 
+    void printBalls() {
+        for (Ball ball : this.ballList) {
+            System.out.println("숫자: " + ball.number + " 자리: " + ball.position);
+        }
+    }
+
     GameResult calResult(Balls userBalls) {
         int strikes = 0;
         int balls = 0;
