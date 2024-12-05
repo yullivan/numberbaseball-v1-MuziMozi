@@ -16,9 +16,7 @@ public class Ball {
         else if (isBall(com, user)) {
             return "BALL";
         }
-        else {
-            return "NOTHING";
-        }
+        return "NOTHING";
     }
 
     static Boolean isStrike(Ball com, Ball user) {

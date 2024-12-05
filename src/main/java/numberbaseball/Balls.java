@@ -7,7 +7,6 @@ import static numberbaseball.Ball.matchStatus;
 
 public class Balls {
     List<Ball> ballList;
-    GameResult gameResult;
 
     public Balls() {
         ballList = new ArrayList<>();
@@ -17,16 +16,18 @@ public class Balls {
         ballList.add(ball);
     }
 
-    List<String> matchAllBalls(Balls comBalls, Balls userBalls) {
-        List<String> resultList = new ArrayList<>();
+    GameResult calResult(Balls comBalls, Balls userBalls) {
+        int strikes = 0;
+        int balls = 0;
         for (Ball comball : comBalls.ballList) {
-            matchStatus(comball, userBalls.ballList.get(comBalls.ballList.indexOf(comball)));
-            resultList.add(matchStatus(comball, userBalls.ballList.get(comBalls.ballList.indexOf(comball))));
-        }
-        return resultList;
-    }
+            if (matchStatus(comball, userBalls.ballList.get(comBalls.ballList.indexOf(comball))).equals("STRIKE")) {
+                strikes++;
+            }
+            else if (matchStatus(comball, userBalls.ballList.get(comBalls.ballList.indexOf(comball))).equals("BALL")) {
+                balls++;
+            }
 
-    Boolean isAllStrike(Balls comBalls, Balls userBalls) {
-        return comBalls == userBalls;
+        }
+        return new GameResult(strikes, balls);
     }
 }
