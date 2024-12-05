@@ -9,22 +9,22 @@ public class Ball {
         this.position = position;
     }
 
-    static String matchStatus(Ball com, Ball user) {
-        if (isStrike(com, user)) {
+    public String matchStatus(Ball userBall) {
+        if (isStrike(userBall)) {
             return "STRIKE";
         }
-        else if (isBall(com, user)) {
+        if (isBall(userBall)) {
             return "BALL";
         }
         return "NOTHING";
     }
 
-    static Boolean isStrike(Ball com, Ball user) {
-        return com.number == user.number && com.position == user.position;
+    boolean isStrike(Ball userBall) {
+        return this.number == userBall.number && this.position == userBall.position;
     }
 
-    static Boolean isBall(Ball com, Ball user) {
-        return com.number == user.number && com.position != user.position;
+    boolean isBall(Ball userBall) {
+        return this.number == userBall.number && this.position != userBall.position;
     }
 
 }

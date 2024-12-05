@@ -2,7 +2,6 @@ package numberbaseball;
 
 import java.util.*;
 
-import static numberbaseball.Ball.matchStatus;
 
 public class Application {
     // 컴퓨터의 숫자 랜덤 추출 함수
@@ -95,7 +94,7 @@ public class Application {
     public static void main(String[] args) {
         Ball com = new Ball(1, 2);
         Ball user = new Ball(1, 2);
-        System.out.println(matchStatus(com, user));
+        System.out.println(com.matchStatus(user));
 //        System.out.println("숫자 야구 게임을 시작합니다!");
 //        System.out.println("1부터 9까지의 서로 다른 숫자 3개를 맞춰보세요.");
 //

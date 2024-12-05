@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static numberbaseball.Ball.matchStatus;
 import static numberbaseball.GameResult.printResult;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,9 +14,10 @@ class ApplicationTests {
 
 	@Test
 	void matchStatusTest() {
-		assertThat(matchStatus(new Ball(1,2), new Ball(1, 2))).isEqualTo("STRIKE");
-		assertThat(matchStatus(new Ball(1,2), new Ball(1, 1))).isEqualTo("BALL");
-		assertThat(matchStatus(new Ball(1,2), new Ball(2, 2))).isEqualTo("NOTHING");
+		Ball comBall = new Ball(1,2);
+		assertThat(comBall.matchStatus(new Ball(1, 2))).isEqualTo("STRIKE");
+		assertThat(comBall.matchStatus(new Ball(1, 1))).isEqualTo("BALL");
+		assertThat(comBall.matchStatus(new Ball(2, 2))).isEqualTo("NOTHING");
 	}
 
 	@Test
@@ -32,8 +32,7 @@ class ApplicationTests {
 		userBalls.addBall(new Ball(3,2));
 		userBalls.addBall(new Ball(4,3));
 
-		GameResult result = new GameResult();
-		result = userBalls.calResult(comBalls, userBalls);
+		GameResult result = comBalls.calResult(userBalls);
 		printResult(result);
 	}
 

@@ -3,7 +3,6 @@ package numberbaseball;
 import java.util.ArrayList;
 import java.util.List;
 
-import static numberbaseball.Ball.matchStatus;
 
 public class Balls {
     List<Ball> ballList;
@@ -16,17 +15,16 @@ public class Balls {
         ballList.add(ball);
     }
 
-    GameResult calResult(Balls comBalls, Balls userBalls) {
+    GameResult calResult(Balls userBalls) {
         int strikes = 0;
         int balls = 0;
-        for (Ball comball : comBalls.ballList) {
-            if (matchStatus(comball, userBalls.ballList.get(comBalls.ballList.indexOf(comball))).equals("STRIKE")) {
+        for (Ball comball : this.ballList) {
+            if (comball.matchStatus(userBalls.ballList.get(this.ballList.indexOf(comball))).equals("STRIKE")) {
                 strikes++;
             }
-            else if (matchStatus(comball, userBalls.ballList.get(comBalls.ballList.indexOf(comball))).equals("BALL")) {
+            else if (comball.matchStatus(userBalls.ballList.get(this.ballList.indexOf(comball))).equals("BALL")) {
                 balls++;
             }
-
         }
         return new GameResult(strikes, balls);
     }
