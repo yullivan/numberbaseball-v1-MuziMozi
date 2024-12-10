@@ -22,22 +22,21 @@ public class Balls {
     }
 
     GameResult calResult(Balls userBalls) {
-        int strikes = 0;
-        int balls = 0;
+        GameResult gameResult = new GameResult(0, 0);
 
         for (Ball comBall : this.ballList) {
             for (Ball userBall : userBalls.ballList) {
-                if (comBall.matchStatus(userBall) == BallStatus.STRIKE) {
-                    strikes++;
-                    break;
-                }
-                if (comBall.matchStatus(userBall) == BallStatus.BALL) {
-                    balls++;
-                    break;
-                }
+                // 볼 상태 비교는 어차피 GameResult의 incrementCount 메서드가 하기 때문에
+                // 굳이 이 안에서 조건문을 쓸 필요없이 그때 그때 결과값만 GameResult에게 전달해주면 됨.
+//                if (comBall.matchStatus(userBall) == BallStatus.STRIKE) {
+//                    gameResult.incrementCount(BallStatus.STRIKE);
+//                }
+//                if (comBall.matchStatus(userBall) == BallStatus.BALL) {
+//                    gameResult.incrementCount(BallStatus.BALL);
+//                }
+                gameResult.incrementCount(comBall.matchStatus(userBall));
             }
         }
-
-        return new GameResult(strikes, balls);
+        return gameResult;
     }
 }

@@ -21,6 +21,15 @@ public class GameResult {
         }
     }
 
+    void incrementCount(BallStatus ballStatus) {
+        if (ballStatus == BallStatus.STRIKE) {
+            this.strikes++;
+        }
+        else if (ballStatus == BallStatus.BALL) {
+            this.balls++;
+        }
+    }
+
     boolean isOut() {
         return this.strikes == 0 && this.balls == 0;
     }
